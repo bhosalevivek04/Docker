@@ -1,31 +1,32 @@
-# RestDemo - Spring Boot Docker Application
+# RestDemo: Spring Boot Docker Application
 
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![Maven](https://img.shields.io/badge/Apache_Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)
 
-A lightweight, production-ready RESTful web service built with **Spring Boot 3.3.3** and fully containerized using **Docker**. This project serves as a reference implementation for building and deploying Java microservices.
+A lightweight, production-ready RESTful web service built with **Spring Boot 3.3.3** and fully containerized using **Docker**. This project serves as a reference implementation for building, testing, and deploying Java-based microservices within isolated environments.
 
 ---
 
 ## 🚀 Features
 
-- **RESTful API**: Simple and efficient endpoints using Spring Web.
-- **Dockerized**: Includes a `Dockerfile` for easy containerization and deployment.
-- **Spring Boot 3.3.3**: Leverages the latest features of the Spring ecosystem.
-- **Maven Wrapper**: Build the project without needing a pre-installed Maven version.
-- **Unit Testing**: Integrated testing suite using JUnit and Spring Boot Test.
+- **RESTful API**: Simple and efficient endpoints implemented via Spring Web.
+- **Dockerized**: Includes a multi-stage `Dockerfile` for optimized containerization.
+- **Spring Boot 3.3.3**: Utilizes the latest stable features of the Spring ecosystem.
+- **Maven Wrapper**: Includes `mvnw` scripts to ensure consistent builds across different environments without requiring a local Maven installation.
+- **Automated Testing**: Integrated unit testing suite using JUnit 5 and Spring Boot Test.
 
 ---
 
 ## 🛠️ Technologies Used
 
-- **Language:** Java 17+
+- **Language:** Java 17 (OpenJDK)
 - **Framework:** Spring Boot 3.3.3
-- **Build Tool:** Maven
+- **Build Tool:** Apache Maven
 - **Containerization:** Docker
 - **Web Layer:** Spring Web (MVC)
+- **Testing:** JUnit 5, MockMvc
 
 ---
 
@@ -47,54 +48,52 @@ cd Docker/RestDemo
 ```
 
 ### 2. Build the Project
-Use the Maven wrapper to compile the application and run tests:
-```bash
-# On Linux/macOS
-./mvnw clean package
+Use the Maven wrapper to compile the application and run tests. This will generate an executable JAR file in the `target/` directory.
 
-# On Windows
+**On Linux/macOS:**
+```bash
+./mvnw clean package
+```
+
+**On Windows:**
+```bash
 mvnw.cmd clean package
 ```
-The executable JAR file will be generated in the `target/` directory.
 
 ---
 
 ## 🐳 Docker Integration
 
-### Build Docker Image
-To create a Docker image for the application, run the following command from the `RestDemo/` directory:
+This project is designed to run seamlessly in a containerized environment.
+
+### Build the Docker Image
+From the `RestDemo` directory, run:
 ```bash
 docker build -t rest-demo:latest .
 ```
 
-### Run Docker Container
-Start the application in a container, mapping port 8080:
+### Run the Container
+Once the image is built, start the container and map the internal port (8080) to your host machine:
 ```bash
 docker run -p 8080:8080 rest-demo:latest
 ```
-
 The application will now be accessible at `http://localhost:8080`.
 
 ---
 
-## 📖 API Documentation
+## 📡 API Documentation
 
-The application exposes a simple REST controller (`HelloController`).
+The application exposes a simple REST controller. Once the application is running, you can interact with the following endpoint:
 
-### Endpoints
+### Hello Endpoint
+- **URL:** `/` or `/hello` (depending on implementation)
+- **Method:** `GET`
+- **Response:** `200 OK`
+- **Body:** Returns a "Hello World" or greeting message.
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET`  | `/`      | Returns a welcome message or "Hello World". |
-
-#### Example Request
+**Example Request:**
 ```bash
 curl http://localhost:8080/
-```
-
-#### Example Response
-```text
-Hello from Spring Boot!
 ```
 
 ---
@@ -105,25 +104,28 @@ Hello from Spring Boot!
 RestDemo/
 ├── src/
 │   ├── main/
-│   │   ├── java/com/vivek/RestDemo/     # Source code
-│   │   └── resources/                   # Application properties
-│   └── test/                            # Unit & Integration tests
-├── Dockerfile                           # Docker configuration
-├── pom.xml                              # Maven dependencies
-└── mvnw                                 # Maven wrapper script
+│   │   ├── java/com/vivek/RestDemo/
+│   │   │   ├── RestDemoApplication.java  # Main entry point
+│   │   │   └── HelloController.java      # REST Endpoints
+│   │   └── resources/
+│   │       └── application.properties     # App configuration
+│   └── test/                             # Unit & Integration tests
+├── Dockerfile                            # Docker configuration
+├── pom.xml                               # Maven dependencies
+└── mvnw                                  # Maven wrapper script
 ```
-
-> **Note:** The `bin/` directory in the repository contains build artifacts and compiled classes. For development, please focus on the `src/` directory.
 
 ---
 
 ## 🧪 Running Tests
 
-To execute the test suite, run:
+To execute the test suite and ensure everything is working correctly:
+
 ```bash
 ./mvnw test
 ```
-Test reports are generated in `target/surefire-reports/`.
+
+The test results, including coverage reports, will be available in the `target/surefire-reports/` directory.
 
 ---
 
@@ -140,12 +142,12 @@ Contributions are welcome! To contribute:
 
 ## 📄 License
 
-This project is currently unlicensed. Please contact the repository owner for usage permissions.
+This project is currently unlicensed. Please check the repository for updates regarding licensing.
 
 ---
 
 ## ✉️ Contact
 
-**Vivek** - [GitHub Profile](https://github.com/bhosalevivek04)
+**Vivek Bhosale** - [GitHub Profile](https://github.com/bhosalevivek04)
 
 Project Link: [https://github.com/bhosalevivek04/Docker](https://github.com/bhosalevivek04/Docker)
